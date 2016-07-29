@@ -1,9 +1,7 @@
 FROM uqlibrary/docker-fpm70:13
 
 RUN rpm --import http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro && \
-  yum install -y http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el7.rf.x86_64.rpm && \
-  yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm && \
-  yum install -y http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-1.el7.nux.noarch.rpm && \
+  yum install -y http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm && \
   yum install -y file && \
   yum install -y mysql && \
   yum install -y poppler-utils && \
