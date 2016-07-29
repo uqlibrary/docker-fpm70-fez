@@ -24,7 +24,7 @@ RUN rpm --import http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro && \
   yum autoremove -y && yum clean all
 
 COPY jhove /usr/local/jhove/
-RUN chmod +x /usr/local/jhove/jhove
+RUN chmod +x /usr/local/jhove/jhove && sed -i 's/\#JHOVE_HOME=\[fill in path to jhove directory\]/JHOVE_HOME=\/usr\/local\/jhove\//' /usr/local/jhove/jhove
 
 COPY etc/php-fpm.d/www.conf /etc/php-fpm.d/www.conf
 
