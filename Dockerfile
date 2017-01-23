@@ -1,4 +1,4 @@
-FROM uqlibrary/docker-fpm70:15
+FROM uqlibrary/docker-fpm70:17
 
 RUN rpm --import http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro && \
   yum install -y http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm && \
@@ -7,7 +7,7 @@ RUN rpm --import http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro && \
   yum install -y poppler-utils && \
   yum install -y perl-Image-ExifTool --enablerepo=epel-testing && \
   yum install -y ffmpeg --enablerepo=nux-dextop && \
-  yum install -y ImageMagick-last ImageMagick-last-devel --enablerepo=remi --skip-broken && \
+  yum install -y ImageMagick7 ImageMagick7 --enablerepo=remi --skip-broken && \
   wget -O /usr/local/src/jhove.tar.gz http://downloads.sourceforge.net/project/jhove/jhove/JHOVE%201.11/jhove-1_11.tar.gz && \
   wget -O /usr/local/src/yamdi.tar.gz http://downloads.sourceforge.net/project/yamdi/yamdi/1.9/yamdi-1.9.tar.gz && \
   wget -O /usr/local/src/graphviz.tar.gz http://www.graphviz.org/pub/graphviz/stable/SOURCES/graphviz-2.38.0.tar.gz && \
@@ -33,4 +33,5 @@ RUN mkdir -p /espace/data && \
   sed -i "s/memory_limit = 128M/memory_limit = 800M/" /etc/php.ini && \
   sed -i "s/post_max_size = 8M/post_max_size = 800M/" /etc/php.ini && \
   sed -i "s/upload_max_filesize = 30M/upload_max_filesize = 800M/" /etc/php.ini && \
+  sed -i "s/session.gc_maxlifetime = 1440/session.gc_maxlifetime = 10800/" /etc/php.ini && \
   sed -i "s/; max_input_vars = 1000/max_input_vars = 5000/" /etc/php.ini
